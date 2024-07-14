@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  font-family: "Nunito Sans", sans-serif;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  min-width: 350px;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+code {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+p {
+  font-family: "Nunito Sans", sans-serif;
+  color: #fefefe;
+  word-wrap: break-word;
+}
+
+
+* {
+  font-family: "Nunito Sans", sans-serif;
+  padding: none;
+  margin: none;
+  transition: 1s linear;
+}
+
+input {
+  font-family: "Nunito Sans", sans-serif;
+  background-color: transparent;
+  color: white;
+  font-style: italic;
+}
+
+a {
+  text-decoration: none;
+
+  font-style: italic;
+  color: white;
+}
+
+
+button {
+  font-family: "Nunito Sans", sans-serif;
+  color: white;
+
+  font-style: italic;
+}
+
+
+h1 {
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #fefefe;
+  font-size: 3.5rem;
+  text-shadow: 2px 2px black;
+}

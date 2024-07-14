@@ -1,0 +1,202 @@
+import './App.css';
+import { FaTelegramPlane } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import dex from './dex.png'
+import dext from './dext.svg';
+import { useState, useCallback, useRef } from 'react';
+import { useEffect } from 'react';
+import trump from './trump.png';
+import jjm from './jjm.mp3';
+import ear from './ear.png';
+import trump2 from './trump2.png';
+function Home() {
+
+  const copyText = () => {
+    var text = document.getElementById("ca").innerText;
+
+    // Create a temporary textarea element
+    var textarea = document.createElement("textarea");
+
+    // Set the text content to the paragraph text
+    textarea.value = text.replace("Click text to squish CA", "");
+
+    console.log(textarea.value);
+
+    // Append the textarea to the body
+    document.body.appendChild(textarea);
+
+    // Select the text inside the textarea
+    textarea.select();
+
+    // Execute the copy command
+    document.execCommand("copy");
+
+    // Remove the temporary textarea
+    document.body.removeChild(textarea);
+
+    // Alert the user that the text has been copied
+    alert("SQUISHY CA copied. Send It.");
+  }
+
+
+
+  const [data, setData] = useState({ price: 0, volume: 0 });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://api.dexscreener.com/latest/dex/tokens/2BUZ19fT8TYvPzhuvtCCp9ceu9eNRCmY11S4vSATpump');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const jsonData = await response.json();
+
+        if (jsonData.pairs) {
+          setData({ price: jsonData.pairs[0].priceUsd, volume: jsonData.pairs[0].volume.h24 });
+        }
+
+      } catch (error) {
+        setData({ price: 0, volume: 0 });
+      }
+    };
+
+    const fetchDataInterval = setInterval(fetchData, 3000); // Fetch data every 3 seconds
+
+    // Cleanup function to cancel the interval when component unmounts or changes
+    return () => clearInterval(fetchDataInterval);
+  }, []);
+
+  const formatNumber = useCallback((n) => {
+    if (n < 1000) {
+      return n.toString(); // If less than 1000, return the number as string
+    } else if (n < 1000000) {
+      return (n / 1000).toFixed(2) + "K"; // Convert to K format
+    } else if (n < 1000000000) {
+      return (n / 1000000).toFixed(2) + "M"; // Convert to M format
+    } else {
+      return (n / 1000000000).toFixed(2) + "B"; // Convert to B format
+    }
+  }, []);
+
+
+
+  const aRef = useRef(null);
+
+  const playMusic = () => {
+    if (aRef) {
+      aRef.current.currentTime = 0;
+      aRef.current.play();
+    }
+  }
+
+
+  return (
+    <div className="home">
+      <div className="foot">
+        <div className='buttonsH'>
+          <a href="https://x.com/theearstayson?s=11" className='logs' target="_blank" rel="noreferrer">
+            <FaXTwitter size={30} color='black' />
+          </a>
+          <a className='logs' href="t.me/earstayson" target='_blank' rel="noreferrer">
+            <FaTelegramPlane size={28} color='black' />
+          </a>
+          <img src={dext} alt="linus" className='dex logs' onClick={() => {
+            window.open('https://www.dextools.io/app/en/solana/pair-explorer/CU6JLMqYQv1hyrQNspGyLQtbbrViuFLybVLPcMpKKzyu', '_blank');
+          }} />
+          <img src={dex} alt="linus" className='dex logs' onClick={() => {
+            window.open('https://dexscreener.com/solana/CU6JLMqYQv1hyrQNspGyLQtbbrViuFLybVLPcMpKKzyu', '_blank');
+          }} />
+        </div>
+      </div>
+      <div className="section land">
+        {/* <div className='ldiv1'>
+            <img src={logo} alt="roor" className='img shingle' />
+            <img src={main} alt="roor" className='img shingle main' />
+          </div>
+          <div className='txt'><img src={logotxt} alt="roor" className='logotxt img shingle' /></div> */}
+
+
+        <div className='lbody'>
+
+          <div className='ltextcont'>
+            <h1>$EAR</h1>
+          </div>
+          <p className='paw'>THE EAR STAYS ON AND WILL ALWAYS BE ON</p>
+          <div className='radca'>
+            <p className='calabel'>CA:</p>
+            <p onClick={copyText} id="ca" className='ca'>2BUZ19fT8TYvPzhuvtCCp9ceu9eNRCmY11S4vSATpump
+              <div><p className='tooltip'>Click text to squish CA</p></div></p>
+
+          </div>
+          {/* <div className='glasscard'>
+
+            <div className='textcontainer'>  <p className='maintext'>Market Cap: </p><p className='highlight' >{formatNumber(data.price * 999238.80) || 0}$</p></div>
+            <div className='textcontainer'> <p className='maintext'>24H Volume: </p><p className='highlight'>{formatNumber(data.volume) || 0}$</p></div>
+            <div className='textcontainer'>  <p className='maintext'>Price: </p><p className='highlight' >{data.price || 0}$</p></div>
+          </div> */}
+
+          <div className='buttonsHF'>
+            <input type="button" className='btnBig' value="GET YOUR $EAR"
+
+              onClick={() => {
+                window.open('https://jup.ag/swap/SOL-2BUZ19fT8TYvPzhuvtCCp9ceu9eNRCmY11S4vSATpump', '_blank');
+              }}
+
+            />
+            {/* <input type="button" className='btnBig'
+              style={{ backgroundColor: "white", color: "white !important" }}
+              value={`${music ? 'STOP' : 'PLAY'} MUSIC`}
+              onClick={music ? stopMusic : playMusic}
+
+            /> */}
+            {/* <a className='btnBigBlack' href="#maker" style={{ backgroundColor: "black", color: "white !important", textDecoration: "none" }}>Make a Squishy</a>
+            <a className='btnBigBlack' href="#Tokememes" style={{ backgroundColor: "black", color: "white !important", textDecoration: "none" }}>View Squishy Memes</a> */}
+            {/* {music ? <MdMusicOff className="btnM" size={20} color='black' onClik={stopMusic} /> : <MdMusicNote className="btnM" size={20} color='black' onClick={playMusic} />} */}
+            <img src={ear} onClick={playMusic} className="tenga" alt="heyy" style={{ width: "6rem", height: "auto", cursor: "pointer" }} />
+          </div>
+          <div className='glasscard'>
+
+            <div className='textcontainer'>  <p className='maintext'>Market Cap: </p><p className='highlight' >{formatNumber(data.price * 969068223.40) || 0}</p></div>
+            <div className='textcontainer'> <p className='maintext'>24H Volume: </p><p className='highlight'>{formatNumber(data.volume) || 0}$</p></div>
+            <div className='textcontainer'>  <p className='maintext'>Price: </p><p className='highlight' >{data.price || 0}$</p></div>
+          </div>
+
+        </div>
+
+        <img src={trump} alt="heyy" className='cardimgmascot' />
+
+
+        <audio ref={aRef} id="myAudio" controls autoplay preload="auto" style={{ display: "none" }} >
+          <source src={jjm} type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+
+      </div>
+
+      <div className="section abbt" id="Tokenomics">
+        <h1>About $EAR</h1>
+        <div className='radabout'>
+          {/* <h1 className='radhd' id='radhd'>What is $RAD?</h1> */}
+
+          <div className='radcontent'>
+            <div className='abouttexts'>
+              <h1>We are hearing things...</h1>
+              <p>$EAR is a community takeover project. Passionate and diligent to its duty to serve the community. Earnest in upholing values and principles. Committed to the meme. Committed to the community. Committed to ensure that the EAR stays on.</p>
+            </div>
+            <img src={trump2} alt="heyy" className='aboutmascot' />
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div >
+
+  );
+}
+
+export default Home;
