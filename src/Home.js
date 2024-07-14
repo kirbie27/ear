@@ -156,7 +156,7 @@ function Home() {
           </div>
           <div className='glasscard'>
 
-            <div className='textcontainer'>  <p className='maintext'>Market Cap: </p><p className='highlight' >{formatNumber(data.price * 969068223.40) || 0}</p></div>
+            <div className='textcontainer'>  <p className='maintext'>Market Cap: </p><p className='highlight' >{formatNumber(data.price * 989999992.19) || 0}</p></div>
             <div className='textcontainer'> <p className='maintext'>24H Volume: </p><p className='highlight'>{formatNumber(data.volume) || 0}$</p></div>
             <div className='textcontainer'>  <p className='maintext'>Price: </p><p className='highlight' >{data.price || 0}$</p></div>
           </div>
