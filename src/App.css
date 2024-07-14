@@ -338,8 +338,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dex {
-  height: 30px;
-  width: 30px;
+  height: 28px;
+  width: 28px;
 }
 
 .dexsm {
@@ -741,7 +741,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .foot {
   justify-content: flex-end;
-  padding: 1rem;
+  padding: 1.5rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -1006,7 +1006,23 @@ input[type=range]:focus::-ms-fill-upper {
   transform: scaleX(1.2);
 }
 
+.loginfo {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5rem !important;
+  padding: 0.5rem;
+  border-radius: 3px;
+  background-color: white;
+  color: black !important;
+  text-align: center;
+  position: absolute;
+  bottom: -2.5rem;
+  width: auto;
+}
+
 .logs {
+  position: relative;
   cursor: pointer;
   padding: 0.7rem;
   border-radius: 50%;
@@ -1015,8 +1031,9 @@ input[type=range]:focus::-ms-fill-upper {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  transition: none;
   box-shadow: 2px 1px 0px rgb(0, 0, 0);
+  transform: scale(1.4);
 }
 
 .hogs {
@@ -1043,7 +1060,12 @@ input[type=range]:focus::-ms-fill-upper {
 
 .logs:hover {
   transition: 0.2s ease;
-  transform: scale(1.05);
+  background-color: #dedddd;
+}
+
+.logs:hover>.loginfo {
+
+  display: flex !important;
 }
 
 .txt {
@@ -1254,7 +1276,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .buttonsH {
   display: flex;
-  gap: 1.5rem;
+  gap: 2.5rem;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
@@ -1713,6 +1735,11 @@ p {
 
   }
 
+  .logs {
+
+    transform: scale(1) !important;
+  }
+
   .pinkbag {
     left: -3rem;
     width: 80% !important;
@@ -1755,6 +1782,10 @@ p {
 
   .buttonsHF {
     padding: 0rem !important;
+  }
+
+  .buttonsH {
+    gap: 1.8rem;
   }
 
   .mainp {

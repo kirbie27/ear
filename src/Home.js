@@ -7,6 +7,7 @@ import { useState, useCallback, useRef } from 'react';
 import { useEffect } from 'react';
 import trump from './trump.png';
 import jjm from './jjm.mp3';
+import jjm2 from './jjm2.mp3';
 import ear from './ear.png';
 import trump2 from './trump2.png';
 function Home() {
@@ -90,22 +91,52 @@ function Home() {
   }
 
 
+  const bRef = useRef(null);
+
+
+  const [playing, setPlaying] = useState(false);
+
+  const playSong = () => {
+    if (bRef) {
+      bRef.current.currentTime = 0;
+      bRef.current.play();
+      setPlaying(true);
+    }
+  }
+  const stopSong = () => {
+    if (bRef) {
+      bRef.current.pause();
+      setPlaying(false);
+    }
+  }
+
+
   return (
     <div className="home">
       <div className="foot">
         <div className='buttonsH'>
           <a href="https://x.com/theearstayson?s=11" className='logs' target="_blank" rel="noreferrer">
-            <FaXTwitter size={30} color='black' />
+            <FaXTwitter size={28} color='black' />
+            <p className='loginfo'>Visit X</p>
           </a>
           <a className='logs' href="https://t.me/earstayson" target='_blank' rel="noreferrer">
             <FaTelegramPlane size={28} color='black' />
+            <p className='loginfo'>Telegram.</p>
           </a>
-          <img src={dext} alt="linus" className='dex logs' onClick={() => {
+          <div className='logs' onClick={() => {
             window.open('https://www.dextools.io/app/en/solana/pair-explorer/CU6JLMqYQv1hyrQNspGyLQtbbrViuFLybVLPcMpKKzyu', '_blank');
-          }} />
-          <img src={dex} alt="linus" className='dex logs' onClick={() => {
+          }} >
+            <img src={dext} alt="linus" className='dex' />
+            <p className='loginfo'>Dextools</p>
+          </div>
+
+          <div className='logs' onClick={() => {
             window.open('https://dexscreener.com/solana/CU6JLMqYQv1hyrQNspGyLQtbbrViuFLybVLPcMpKKzyu', '_blank');
-          }} />
+          }}>
+            <img src={dex} alt="linus" className='dex' /><p className='loginfo'>Dexscreener</p>
+          </div>
+
+
         </div>
       </div>
       <div className="section land">
@@ -143,6 +174,12 @@ function Home() {
               }}
 
             />
+
+            <input type="button" className='btnBig' value={playing ? "Stop Music" : "Play Music"}
+
+              onClick={playing ? stopSong : playSong}
+
+            />
             {/* <input type="button" className='btnBig'
               style={{ backgroundColor: "white", color: "white !important" }}
               value={`${music ? 'STOP' : 'PLAY'} MUSIC`}
@@ -171,6 +208,12 @@ function Home() {
           Your browser does not support the audio element.
         </audio>
 
+        <audio ref={bRef} id="myAudio" controls autoplay loop preload="auto" style={{ display: "none" }} >
+          <source src={jjm2} type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+
+
       </div>
 
       <div className="section abbt" id="Tokenomics">
@@ -181,7 +224,7 @@ function Home() {
           <div className='radcontent'>
             <div className='abouttexts'>
               <h1>We are hearing things...</h1>
-              <p>$EAR is a community takeover project. Passionate and diligent to its duty to serve the community. Earnest in upholing values and principles. Committed to the meme. Committed to the community. Committed to ensure that the EAR stays on.</p>
+              <p>$EAR is a community takeover project. Passionate and diligent to its duty to serve the community. Earnest in upholding values and principles. Committed to the meme. Committed to the community. Committed to ensure that the EAR stays on.</p>
             </div>
             <img src={trump2} alt="heyy" className='aboutmascot' />
 
