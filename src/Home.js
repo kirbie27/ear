@@ -97,7 +97,7 @@ function Home() {
           <a href="https://x.com/theearstayson?s=11" className='logs' target="_blank" rel="noreferrer">
             <FaXTwitter size={30} color='black' />
           </a>
-          <a className='logs' href="t.me/earstayson" target='_blank' rel="noreferrer">
+          <a className='logs' href="https://t.me/earstayson" target='_blank' rel="noreferrer">
             <FaTelegramPlane size={28} color='black' />
           </a>
           <img src={dext} alt="linus" className='dex logs' onClick={() => {
