@@ -35,7 +35,7 @@ function Home() {
     document.body.removeChild(textarea);
 
     // Alert the user that the text has been copied
-    alert("SQUISHY CA copied. Send It.");
+    alert("$EAR CA copied. Send It.");
   }
 
 
