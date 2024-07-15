@@ -242,7 +242,7 @@ function Home() {
       <div className="section abbt" id="Tokenomics">
 
 
-        <h1>EARNOMICS</h1>
+        <h1>EAR-nomics</h1>
         <div className='gallery'>
           <div className='card shingle'>
             <img src={supply} alt="heyy" className='cardimg' />
