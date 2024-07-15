@@ -10,6 +10,9 @@ import jjm from './jjm.mp3';
 import jjm2 from './jjm2.mp3';
 import ear from './ear.png';
 import trump2 from './trump2.png';
+import supply from './supply.png';
+import team from './team.png';
+import burn from './burn.png';
 function Home() {
 
   const copyText = () => {
@@ -231,6 +234,37 @@ function Home() {
           </div>
 
 
+        </div>
+
+
+      </div>
+
+      <div className="section abbt" id="Tokenomics">
+
+
+        <h1>Squishynomics</h1>
+        <div className='gallery'>
+          <div className='card shingle'>
+            <img src={supply} alt="heyy" className='cardimg' />
+
+            <div className='cardtext'>
+              <p>990 Million.</p>
+            </div>
+          </div>
+          <div className='card shingle'>
+            <img src={team} alt="heyy" className='cardimg' />
+
+            <div className='cardtext'>
+              <p>Zero Team Tokens. CTO.</p>
+            </div>
+          </div>
+          <div className='card shingle'>
+            <img src={burn} alt="heyy" className='cardimg' />
+
+            <div className='cardtext'>
+              <p>10 Million Burned.</p>
+            </div>
+          </div>
         </div>
 
 
