@@ -1414,6 +1414,26 @@ li {
   object-fit: cover;
 }
 
+.exchanges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  border-radius: 3px;
+  background-color: white;
+
+  border: solid 3px black;
+}
+
+.exchanges p {
+  color: black;
+  font-size: 1.5rem !important;
+  font-weight: bold;
+  font-style: italic;
+  word-wrap: break-word;
+}
+
 .cardimgmascot {
   width: 41%;
   object-fit: cover;

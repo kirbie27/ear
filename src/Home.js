@@ -270,6 +270,17 @@ function Home() {
 
       </div>
 
+      <div className="section abbt" id="Tokenomics">
+
+
+        <h1>$EAR is already listed on multiple Exchanges!</h1>
+        <div className='exchanges'>
+          <p>List of partnered exchanges coming soon...</p>
+        </div>
+
+
+      </div>
+
 
     </div >
 
