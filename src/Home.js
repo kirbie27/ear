@@ -190,6 +190,9 @@ function Home() {
               onClick={playing ? stopSong : playSong}
 
             />
+
+            <a href='#PFPMaker' className='btnBig' >Make a PFP</a>
+
             {/* <input type="button" className='btnBig'
               style={{ backgroundColor: "white", color: "white !important" }}
               value={`${music ? 'STOP' : 'PLAY'} MUSIC`}
@@ -199,7 +202,7 @@ function Home() {
             {/* <a className='btnBigBlack' href="#maker" style={{ backgroundColor: "black", color: "white !important", textDecoration: "none" }}>Make a Squishy</a>
             <a className='btnBigBlack' href="#Tokememes" style={{ backgroundColor: "black", color: "white !important", textDecoration: "none" }}>View Squishy Memes</a> */}
             {/* {music ? <MdMusicOff className="btnM" size={20} color='black' onClik={stopMusic} /> : <MdMusicNote className="btnM" size={20} color='black' onClick={playMusic} />} */}
-            <img src={ear} onClick={playMusic} className="tenga" alt="heyy" style={{ width: "6rem", height: "auto", cursor: "pointer" }} />
+            <img src={ear} onClick={playMusic} className="tenga" alt="heyy" style={{ width: "5rem", height: "auto", cursor: "pointer" }} />
           </div>
           <div className='glasscard'>
 
@@ -272,6 +275,17 @@ function Home() {
               <p>10 Million Burned.</p>
             </div>
           </div>
+        </div>
+
+
+      </div>
+
+      <div className="section abbt" id="PFPMaker">
+
+
+        <h1>Make your own $EAR PFP</h1>
+        <div className='exchanges'>
+          <p>Coming soon...</p>
         </div>
 
 
