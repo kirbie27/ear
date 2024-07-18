@@ -13,6 +13,7 @@ import trump2 from './trump2.png';
 import supply from './supply.png';
 import team from './team.png';
 import burn from './burn.png';
+import gecko from './gecko.png';
 function Home() {
 
   const copyText = () => {
@@ -137,6 +138,12 @@ function Home() {
             window.open('https://dexscreener.com/solana/CU6JLMqYQv1hyrQNspGyLQtbbrViuFLybVLPcMpKKzyu', '_blank');
           }}>
             <img src={dex} alt="linus" className='dex' /><p className='loginfo'>Dexscreener</p>
+          </div>
+
+          <div className='logs' onClick={() => {
+            window.open('https://www.coingecko.com/en/coins/the-ear-stays-on', '_blank');
+          }}>
+            <img src={gecko} alt="linus" className='dex' /><p className='loginfo'>Coingecko</p>
           </div>
 
 
