@@ -24,7 +24,7 @@ function Home() {
     var textarea = document.createElement("textarea");
 
     // Set the text content to the paragraph text
-    textarea.value = text.replace("Click text to squish CA", "");
+    textarea.value = text.replace("Click text to copy CA", "");
 
     console.log(textarea.value);
 
@@ -167,7 +167,7 @@ function Home() {
           <div className='radca'>
             <p className='calabel'>CA:</p>
             <p onClick={copyText} id="ca" className='ca'>2BUZ19fT8TYvPzhuvtCCp9ceu9eNRCmY11S4vSATpump
-              <div><p className='tooltip'>Click text to squish CA</p></div></p>
+              <div><p className='tooltip'>Click text to copy CA</p></div></p>
 
           </div>
           {/* <div className='glasscard'>
