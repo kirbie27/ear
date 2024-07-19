@@ -14,6 +14,7 @@ import supply from './supply.png';
 import team from './team.png';
 import burn from './burn.png';
 import gecko from './gecko.png';
+import { exchanges } from './exchanges';
 function Home() {
 
   const copyText = () => {
@@ -284,7 +285,7 @@ function Home() {
 
 
         <h1>Make your own $EAR PFP</h1>
-        <div className='exchanges'>
+        <div className='pfpplaceholder'>
           <p>Coming soon...</p>
         </div>
 
@@ -294,9 +295,18 @@ function Home() {
       <div className="section abbt" id="Tokenomics">
 
 
-        <h1>$EAR is already listed on multiple Exchanges!</h1>
+        <h1>$EAR is listed on multiple Exchanges!</h1>
         <div className='exchanges'>
-          <p>List of partnered exchanges coming soon...</p>
+          {
+            exchanges.map((x) =>
+              <div className='exchangecard' onClick={() => {
+                window.open(x.url, '_blank');
+              }}>
+                <img src={x.img} alt="heyy" className='exchangeimg' />
+                <p>{x.name}</p>
+              </div>
+            )
+          }
         </div>
 
 
