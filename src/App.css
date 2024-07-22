@@ -405,6 +405,8 @@ body::-webkit-scrollbar-thumb {
   height: 16rem;
   z-index: 500;
   transform: rotate(3deg);
+
+  pointer-events: none;
 }
 
 .fframe {
