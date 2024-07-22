@@ -15,6 +15,26 @@ import team from './team.png';
 import burn from './burn.png';
 import gecko from './gecko.png';
 import { exchanges } from './exchanges';
+
+
+import pants from './gen/pant';
+import bgs from './gen/bg';
+import hats from './gen/hats';
+import shirts from './gen/shirts';
+import items from './gen/face';
+import AssetPicker from './AssetPicker';
+
+
+import ReactLoading from 'react-loading';
+import html2canvas from 'html2canvas';
+
+import vote from './vote.mp3';
+import sticker from './sticker.png';
+import earbase from './earbase.png';
+
+import logo from './logo.png';
+import trumpear from './trumpear.png';
+import { memes } from './memes';
 function Home() {
 
   const copyText = () => {
@@ -96,6 +116,17 @@ function Home() {
   }
 
 
+  const voteRef = useRef(null);
+
+  const playVote = () => {
+    if (voteRef) {
+      voteRef.current.currentTime = 0;
+      voteRef.current.play();
+    }
+  }
+
+
+
   const bRef = useRef(null);
 
 
@@ -115,6 +146,128 @@ function Home() {
     }
   }
 
+
+  //const [base, setBase] = useState(0);
+  const [hat, setHat] = useState(-1);
+  const [bg, setBg] = useState(0);
+  const [shirt, setShirt] = useState(-1);
+  const [pant, setPant] = useState(-1);
+  const [item, setItem] = useState(-1);
+  const getRandomNumber = useCallback((n) => {
+    // Generate a random number between 1 and n
+    return Math.floor(Math.random() * n);
+  }, []);
+
+  const [loading, setLoading] = useState(false);
+
+
+  const handleLoad = useCallback(() => {
+    // Set clicked to true immediately
+    if (loading)
+      return;
+    setLoading(true);
+
+    // Set clicked back to false after 1 second
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, [loading]);
+
+  useEffect(() => {
+    handleLoad();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+
+  const randomize = useCallback(() => {
+
+    playVote();
+
+    const h = getRandomNumber(hats.length);
+    const shrt = getRandomNumber(shirts.length);
+    //const fc = getRandomNumber(faces.length);
+    const bg = getRandomNumber(bgs.length);
+    const b = getRandomNumber(pants.length);
+    const f = getRandomNumber(items.length);
+
+    setHat(() => {
+      setShirt(() => {
+        setPant(() => {
+          setItem(() => {
+
+            setBg(() => {
+              return bg;
+            });
+            // setFace(() => {
+            //   return fc
+            // });
+
+            return f
+          });
+          return b
+        });
+
+        return shrt;
+      });
+      return h
+    });
+    handleLoad();
+  }, [getRandomNumber, handleLoad]);
+
+  const clear = useCallback(() => {
+
+    // if (loading) {
+    //   alert("Not too fast ;)");
+    //   return;
+    // }
+    const h = -1;
+    const shrt = -1;
+    //const fc = -1;
+    const b = -1;
+    const f = -1;
+    const bg = 0;
+    setHat(() => {
+      setShirt(() => {
+        setPant(() => {
+          setItem(() => {
+
+            setBg(() => {
+              return bg;
+            });
+            // setFace(() => {
+            //   return fc
+            // });
+
+            return f
+          });
+          return b
+        });
+
+        return shrt;
+      });
+      return h
+    });
+
+    //handleLoad();
+  }, []);
+
+  const handleDownloadImage = async () => {
+    const element = document.getElementById('print'),
+      canvas = await html2canvas(element, {
+        backgroundColor: null, // or 'transparent'
+        useCORS: true // add this option
+      }),
+      data = canvas.toDataURL('image/png'),
+      link = document.createElement('a');
+
+    link.href = data;
+    link.download = 'ear-meme.png';
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+  };
 
   return (
     <div className="home">
@@ -200,8 +353,8 @@ function Home() {
               onClick={music ? stopMusic : playMusic}
 
             /> */}
-            {/* <a className='btnBigBlack' href="#maker" style={{ backgroundColor: "black", color: "white !important", textDecoration: "none" }}>Make a Squishy</a>
-            <a className='btnBigBlack' href="#Tokememes" style={{ backgroundColor: "black", color: "white !important", textDecoration: "none" }}>View Squishy Memes</a> */}
+            {/* <a className='btnBigBlack' href="#maker" style={{ backgroundColor: "black", color: "white !important", textDecoration: "none" }}>Make a ear</a>
+            <a className='btnBigBlack' href="#Tokememes" style={{ backgroundColor: "black", color: "white !important", textDecoration: "none" }}>View ear Memes</a> */}
             {/* {music ? <MdMusicOff className="btnM" size={20} color='black' onClik={stopMusic} /> : <MdMusicNote className="btnM" size={20} color='black' onClick={playMusic} />} */}
             <img src={ear} onClick={playMusic} className="tenga" alt="heyy" style={{ width: "5rem", height: "auto", cursor: "pointer" }} />
           </div>
@@ -219,6 +372,11 @@ function Home() {
 
         <audio ref={aRef} id="myAudio" controls autoplay preload="auto" style={{ display: "none" }} >
           <source src={jjm} type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+
+        <audio ref={voteRef} id="myAudio" controls autoplay preload="auto" style={{ display: "none" }} >
+          <source src={vote} type="audio/mp3" />
           Your browser does not support the audio element.
         </audio>
 
@@ -285,10 +443,75 @@ function Home() {
 
 
         <h1>Make your own $EAR PFP</h1>
-        <div className='pfpplaceholder'>
+        {/* <div className='pfpplaceholder'>
           <p>Coming soon...</p>
-        </div>
+        </div> */}
 
+        <div className="makercontent">
+          <img src={sticker} alt="linus" className='sticker' />
+          <div className='pickers'>
+            {/* <AssetPicker type="Base" setValue={setBase} value={base} data={bodies} /> */}
+            <AssetPicker type="Vote for a Hat" setValue={setHat} value={hat} data={hats} onClick={playVote} />
+            <AssetPicker type="Vote for a Bandage" setValue={setItem} value={item} data={items} onClick={playVote} />
+            <AssetPicker type="Vote Earrings" setValue={setShirt} value={shirt} data={shirts} onClick={playVote} />
+            <AssetPicker type="Vote for a Tattoo" setValue={setPant} value={pant} data={pants} onClick={playVote} />
+            <AssetPicker type="Vote for a Background" setValue={setBg} value={bg} data={bgs} onClick={playVote} />
+          </div>
+          <div className='framecontainer'>
+
+            <div className={`frame`} id='print'>
+              {
+                loading ? <div className='loaderdiv'>
+                  <ReactLoading type={'spokes'} color={'white'} height={'30%'} width={'30%'} />
+                </div> : null
+              }
+
+              <img src={bgs[0]} alt="ear" className='makerimg bg' />
+
+
+              <img src={earbase} alt="ear" className='makerimg base' />
+
+              {
+                pant === -1 ? null : <img src={pants[pant]} alt="ear" className='makerimg hat' />
+              }
+
+
+              {
+                shirt === -1 ? null : <img src={shirts[shirt]} alt="ear" className='makerimg hat' />
+              }
+
+              {
+                item === -1 ? null : <img src={items[item]} alt="ear" className='makerimg hat' />
+              }
+
+
+              {
+                hat === -1 ? null : <img src={hats[hat]} alt="ear" className='makerimg hat' />
+              }
+
+
+
+
+
+            </div>
+            <div className='buttonsH'>
+              <input type='button' className='btnBigBlack' onClick={() => {
+                clear();
+              }} value="Reset" />
+
+              <input type='button' className='btnBigBlack' onClick={() => {
+                randomize();
+              }} value="Randomize" />
+
+
+
+              <input type='button' className='btnBigBlack' onClick={handleDownloadImage} style={{ backgroundColor: "black", color: "white !important", textDecoration: "none" }} value="Download" />
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
@@ -312,7 +535,43 @@ function Home() {
 
       </div>
 
+      <div className="section abbt" id="Tokenomics">
 
+
+        <h1>Marketing and Memes</h1>
+        <div className='exchanges'>
+
+          <div className='exchangecard' onClick={() => {
+            window.open(logo, '_blank');
+          }}>
+            <img src={logo} alt="heyy" className='exchangeimg' />
+            <p>Logo</p>
+          </div>
+
+          <div className='exchangecard' onClick={() => {
+            window.open(trumpear, '_blank');
+          }}>
+            <img src={trumpear} alt="heyy" className='exchangeimg' />
+            <p>Trump Ear</p>
+          </div>
+          {
+            memes.map((x) =>
+              <div className='exchangecard' onClick={() => {
+                window.open(x, '_blank');
+              }}>
+                <img src={x} alt="heyy" className='exchangeimg' />
+
+              </div>
+            )
+          }
+        </div>
+
+
+      </div>
+
+      <div className="foot">
+        <p style={{ fontStyle: "italic", fontWeight: "bold" }}>ALL $EARS RESERVED.</p>
+      </div>
     </div >
 
   );

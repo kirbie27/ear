@@ -2,9 +2,9 @@
 import './App.css';
 import { useState, useEffect, useCallback } from 'react';
 import { AiOutlineStop } from "react-icons/ai";
-import { LuBanana } from "react-icons/lu";
+import { PiEarDuotone } from "react-icons/pi";
 const AssetPicker = (props) => {
-  const { value = -1, type = "Asset", data = [1, 2, 3, 4, 5, 7, 8, 9, 10], setValue } = props;
+  const { value = -1, type = "Asset", data = [1, 2, 3, 4, 5, 7, 8, 9, 10], setValue, onClick } = props;
 
   const [start, setStart] = useState(0);
   const [selected, setSelected] = useState(value);
@@ -12,7 +12,8 @@ const AssetPicker = (props) => {
   const select = useCallback((index) => {
     setSelected(index);
     setValue(index);
-  }, [setValue]);
+    onClick();
+  }, [onClick, setValue]);
 
   useEffect(() => {
     setSelected(value);
@@ -21,11 +22,11 @@ const AssetPicker = (props) => {
   return (
     <div className="assetpicker" >
       <p className='ptext'>
-        Choose a {type}
+        {type}
       </p>
       <div className='pickercomp'>
         <div className='bcont'>
-          <LuBanana onClick={() => {
+          <PiEarDuotone onClick={() => {
             setStart((prev) => (prev - 1) < 0 ? prev : prev - 1)
           }} size={30} className={`${(data.length + 1 > 5 && (start > 0)) ? 'bactive' : 'b'} rocketleft`} color={`${data.length + 1 > 5 ? '#e8c605' : 'white'}`} />
         </div>
@@ -61,7 +62,7 @@ const AssetPicker = (props) => {
           }
         </div>
         <div className='bcont'>
-          <LuBanana size={30} onClick={() => {
+          <PiEarDuotone size={30} onClick={() => {
             setStart((prev) => (prev + 1) >= data.length - 3 ? prev : prev + 1)
           }} className={`${(data.length + 1 > 5 && (data.length - start > 4)) ? 'bactive' : 'b'} rocketright`} color={`${data.length + 1 > 5 ? '#e8c605' : 'gray'}`} />
         </div>
