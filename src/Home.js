@@ -449,17 +449,10 @@ function Home() {
 
         <div className="makercontent">
           <img src={sticker} alt="linus" className='sticker' />
-          <div className='pickers'>
-            {/* <AssetPicker type="Base" setValue={setBase} value={base} data={bodies} /> */}
-            <AssetPicker type="Vote for a Hat" setValue={setHat} value={hat} data={hats} onClick={playVote} />
-            <AssetPicker type="Vote for a Bandage" setValue={setItem} value={item} data={items} onClick={playVote} />
-            <AssetPicker type="Vote Earrings" setValue={setShirt} value={shirt} data={shirts} onClick={playVote} />
-            <AssetPicker type="Vote for a Tattoo" setValue={setPant} value={pant} data={pants} onClick={playVote} />
-            <AssetPicker type="Vote for a Background" setValue={setBg} value={bg} data={bgs} onClick={playVote} />
-          </div>
+
           <div className='framecontainer'>
 
-            <div className={`frame`} id='print'>
+            <div className="frame" id='print' onClick={handleDownloadImage}>
               {
                 loading ? <div className='loaderdiv'>
                   <ReactLoading type={'spokes'} color={'white'} height={'30%'} width={'30%'} />
@@ -489,10 +482,6 @@ function Home() {
                 hat === -1 ? null : <img src={hats[hat]} alt="ear" className='makerimg hat' />
               }
 
-
-
-
-
             </div>
             <div className='buttonsH'>
               <input type='button' className='btnBigBlack' onClick={() => {
@@ -509,6 +498,14 @@ function Home() {
 
             </div>
 
+          </div>
+          <div className='pickers'>
+            {/* <AssetPicker type="Base" setValue={setBase} value={base} data={bodies} /> */}
+            <AssetPicker type="Vote for a Hat" setValue={setHat} value={hat} data={hats} onClick={playVote} />
+            <AssetPicker type="Vote for a Bandage" setValue={setItem} value={item} data={items} onClick={playVote} />
+            <AssetPicker type="Vote Earrings" setValue={setShirt} value={shirt} data={shirts} onClick={playVote} />
+            <AssetPicker type="Vote for a Tattoo" setValue={setPant} value={pant} data={pants} onClick={playVote} />
+            <AssetPicker type="Vote for a Background" setValue={setBg} value={bg} data={bgs} onClick={playVote} />
           </div>
 
         </div>
