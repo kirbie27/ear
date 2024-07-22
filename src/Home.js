@@ -459,7 +459,7 @@ function Home() {
                 </div> : null
               }
 
-              <img src={bgs[0]} alt="ear" className='makerimg bg' />
+              <img src={bgs[bg]} alt="ear" className='makerimg bg' />
 
 
               <img src={earbase} alt="ear" className='makerimg base' />
